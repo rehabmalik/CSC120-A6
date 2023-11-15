@@ -1,6 +1,7 @@
 import java.util.Hashtable;
 
 public class Library extends Building {
+    /* List of all the books in the library's collection */
     private Hashtable<String, Boolean> collection;
 
     /**
@@ -14,7 +15,16 @@ public class Library extends Building {
       this.collection = new Hashtable<>();
       System.out.println("You have built a library: 📖");
     }
-  
+
+    /**
+     *  Creates a new default library.
+     */
+    public Library(){
+      super("Unknown", "Unknown", 0);
+      this.collection = new Hashtable<>();
+      System.out.println("You have built a library: 📖");
+    }
+
     /**
      * Adds a new book to the library's collection.
      * @param title String
@@ -59,16 +69,8 @@ public class Library extends Building {
      * @return true if it contains the book or false if it doesn't. 
      */
     public boolean containsTitle(String title){
-      if (this.collection.containsKey(title)){
-        System.out.println("This book is present in the collection.");
-        return true;
+      return this.collection.containsKey(title);
       }
-      
-        else {
-          System.out.println("This book is not present in the collection.");
-          return false;
-        }
-    }
     
     /**
      * Indicates whether or not a book is available to check out.
@@ -76,18 +78,18 @@ public class Library extends Building {
      * @return true if it is available or false if it isn't.
      */
     public boolean isAvailable(String title){
-      if (this.collection.contains(true)){
-        System.out.println("This book is available to check out.");
-        return true;
-      }
-
-      else {
-        System.out.println("This book is not available to check out.");
-        return false;
-      }
+      return this.collection.get(title);
     }
     
-    public void printCollection(){} // prints out the entire collection in an easy-to-read way (including checkout status)
+    /**
+     * Prints a list of the entire collection
+     * @return Title and checkout status of each book
+     */
+    public void printCollection(){
+      for (String key : this.collection.keySet()) {
+        System.out.println("Title:" + key + ", " + "Checkout Status: " + this.collection.get(key));
+      }
+    }
 
     public static void main(String[] args) {
       new Library();
