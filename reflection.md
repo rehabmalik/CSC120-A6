@@ -4,4 +4,4 @@ Use this file to record your reflection on this assignment.
 It's easier to make changes and there's no repitition of code.
 
 - What worked, what didn't, what advice would you give someone taking this course in the future?
-I'm not sure how I can iterate through a hashtable, I couldn't figure that out.
+I think my program works now. I'm not sure if the javadoc headers for the class attributes are correct. 
