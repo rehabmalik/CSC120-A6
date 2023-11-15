@@ -1,7 +1,11 @@
 public class Cafe extends Building{
+    /* Number of coffee ounces in stock at the cafe */
     private int nCoffeeOunces; 
+    /* Number of sugar packets in stock at the cafe */
     private int nSugarPackets;
+    /* Number of creams in stock at the cafe */
     private int nCreams;
+    /* Number of cups in stock at the cafe */
     private int nCups;
     
     /**
@@ -22,7 +26,19 @@ public class Cafe extends Building{
         this.nCups= nCups;
         System.out.println("You have built a cafe: ☕");
     }
-    
+
+    /**
+     * Creates a new default cafe.
+     */
+    public Cafe (){
+        super("Unknown", "Unknown", 0);
+        this.nCoffeeOunces = 0;
+        this.nSugarPackets = 0;
+        this.nCreams = 0;
+        this.nCups= 0;
+        System.out.println("You have built a cafe: ☕");
+    }
+
     /**
      * Sells a coffee and alters stock based on how much is used.
      * Directs user to restock if enough ingredients for current order are  not available.
@@ -67,7 +83,7 @@ public class Cafe extends Building{
     }
 
     public static void main(String[] args) {
-        new Cafe();
+     new Cafe();
     }
     
 }
