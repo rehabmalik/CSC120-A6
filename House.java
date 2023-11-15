@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 
 public class House extends Building {
+    /* List of all the residents in the house */
     private ArrayList<String> residents;
+    /* Whether or not the house has a dining room */
     private boolean hasDiningRoom;
   
    /**
@@ -14,6 +16,16 @@ public class House extends Building {
     public House(String name, String address, int nFloors, boolean hasDiningRoom) {
      super(name,address,nFloors);
      this.hasDiningRoom = hasDiningRoom;
+     this.residents = new ArrayList<>();
+     System.out.println("You have built a house: 🏠");
+    }
+
+    /**
+    * Creates a new default house.
+    */
+    public House(){
+      super("Unknown", "Unknown", 0);
+      this.hasDiningRoom = false;
      this.residents = new ArrayList<>();
      System.out.println("You have built a house: 🏠");
     }
@@ -39,7 +51,11 @@ public class House extends Building {
      * @param name String
      */
     public void moveIn(String name){
+      if (this.residents.contains(name)){
+        throw new RuntimeException (name + " is already a resident of this house. ");
+      }
       this.residents.add(name);
+      System.out.println(name + " is now a resident of this house.");
     }
     
     /**
@@ -48,7 +64,11 @@ public class House extends Building {
      * @return name of the resident moved out
      */
     public String moveOut(String name){
+      if (this.residents.contains(name) == false){
+        throw new RuntimeException(name + " is not a resident of this house. ");
+      }
         this.residents.remove(name);
+        System.out.println(name + " is no longer a resident of this house.");
         return name;
     }
 
@@ -58,8 +78,7 @@ public class House extends Building {
      * @return true if the person is a resident or false if not 
      */
     public boolean isResident(String person){
-      if (this.residents.contains(person)){return true;}
-      else {return false;}
+      return this.residents.contains(person);
     }
 
     public static void main(String[] args) {
